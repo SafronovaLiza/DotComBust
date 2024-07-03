@@ -8,7 +8,7 @@
  */
 
 public class SimpleDotComTest {
-    public static void main(String args[]){
+    public static void main(String[] args){
         SimpleDotCom dot = new SimpleDotCom();
 
         //создаём местоположение "сайта"
@@ -16,19 +16,19 @@ public class SimpleDotComTest {
         dot.setLocationSells(locations);
 
         //сделаем "неудачный" ход от имени пользователя
-        String guess = "5";
+        int guess = 5;
         String result = dot.checkYourself(guess);
         String testResult = "Не пройден";
-        if (result.equals("Мимо")){
+        if (result.equals("Мимо!")){
             testResult = "Пройден";
         }
         System.out.println("Тест №1 " + testResult);
 
         //сделаем "удачный" ход от имени пользователя
-        guess = "2";
+        guess = 2;
         result = dot.checkYourself(guess);
         testResult = "Не пройден";
-        if (result.equals("Попал")){
+        if (result.equals("Попал!")){
             testResult = "Пройден";
         }
         System.out.println("Тест №2 " + testResult);
