@@ -2,7 +2,7 @@ public class SimpleDotCom {
     private int[] locationSells;
     private int numOfHints;
 
-    void setLocationSells(){
+    void setLocationSells(int[] locations){
         //Задаем расположение сайта
         //три последовательные ячейки в массиве
     }
