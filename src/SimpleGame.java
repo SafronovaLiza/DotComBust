@@ -8,7 +8,7 @@ import static java.lang.Math.random;
 
 public class SimpleGame {
     public static void main(String[] arg){
-        int numOgGuess = 0;
+        int numOfGuess = 0;
         int startCell = (int)(0 + random() * 5);
 
         SimpleDotCom dotCom = new SimpleDotCom();
@@ -17,8 +17,6 @@ public class SimpleGame {
         System.out.println("На поле 1х7 расположен сайт длиной 3. ");
 
         Scanner scanner = new Scanner(System.in);
-
-
 
         while (dotCom.getNumOfHints() < 3){
             String guess;
@@ -31,6 +29,8 @@ public class SimpleGame {
             while (intGuess < 0 || intGuess > 6);
 
             System.out.println(dotCom.checkYourself(intGuess));
+            numOfGuess++;
         }
+        System.out.println("Ваши попытки: "+ numOfGuess);
     }
 }
