@@ -2,33 +2,31 @@
  * Логика самой игры
  */
 
-import java.util.Scanner;
-
-import static java.lang.Math.random;
+import java.util.ArrayList;
 
 public class SimpleGame {
     public static void main(String[] arg){
         int numOfGuess = 0;
-        int startCell = (int)(0 + random() * 5);
+        int startCell = (int)(Math.random() * 5);
 
-        SimpleDotCom dotCom = new SimpleDotCom();
-        dotCom.setLocationSells(new int[]{startCell, startCell + 1, startCell + 2});
+        ArrayList<String> cells = new ArrayList<>();
+        cells.add(String.valueOf(startCell));
+        cells.add(String.valueOf(startCell+1));
+        cells.add(String.valueOf(startCell+2));
+
+        DotCom dotCom = new DotCom();
+        dotCom.setLocationCells(cells);
 
         System.out.println("На поле 1х7 расположен сайт длиной 3. ");
+        GameHelper helper = new GameHelper();
 
-        Scanner scanner = new Scanner(System.in);
-
-        while (dotCom.getNumOfHints() < 3){
+        String result = "";
+        while (!result.equals("Потопил!") ){
             String guess;
-            int intGuess;
-            do {
-                System.out.println("Назовите число от 1 до 7, чтобы выстрелить");
-                guess = scanner.nextLine();
-                intGuess = Integer.parseInt(guess) - 1;
-            }
-            while (intGuess < 0 || intGuess > 6);
+            guess = helper.getUserInput("Назовите число от 1 до 7, чтобы выстрелить");
 
-            System.out.println(dotCom.checkYourself(intGuess));
+            result = dotCom.checkYourself(guess);
+            System.out.println(result);
             numOfGuess++;
         }
         System.out.println("Ваши попытки: "+ numOfGuess);
